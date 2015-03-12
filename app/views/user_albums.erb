@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Welcome to <%= @user.username%>'s Albums!</h1><br>
+
+  <% @albums.each do |a| %>
+  <a href="/albums/<%= a.id %>"><%= a.title %></a>
+
+  <% end %>
+</div>

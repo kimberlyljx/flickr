@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Welcome to Flickr!</h1><br>
+
+  <% @albums.each do |a| %>
+  <a href="/albums/<%= a.id %>"><%= a.title %></a>
+  by <a href ="/users/<%= a.user.id %>/albums" ><%= a.user.username %> </a>
+  <% end %>
+</div>
