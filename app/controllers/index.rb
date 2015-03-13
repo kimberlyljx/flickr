@@ -39,7 +39,7 @@ end
 
 get '/albums/:album_id' do
 	@album = Album.find(params[:album_id])
-
+	@uploads = @album.photos
 	erb :photos_in_album
 end
 

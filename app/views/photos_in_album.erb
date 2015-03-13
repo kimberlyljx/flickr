@@ -1,14 +1,27 @@
-
 <div class="container">
   <h1><%= @album.title %></h1><br>
 
   <h3> Current Photos </h3>
-  <p><% @album.photos.each do |p| %>
-    <%= p.caption %><br>
-    <img src="<%= p.file.url %>"></img><br>
-    <% end %>
-  </p> 
+
+  <div class="carousel_controls">
+    <a href="#" id="previous_frame">&lt;</a>
+    <a href="#" id="next_frame">&gt;</a>
   </div>
+
+  <div class="carousel">
+    <ul class="frames" style="width:<%= 100.0*@uploads.length %>%">
+      <% @uploads.each do |upload| %>
+      <%= upload.caption %><br>
+        <li style="width:<%= 100.0/@uploads.length %>%">
+          <a href="/albums/<%= params[:id] %>/photos/<%= upload.id %>">
+            <img src="<%= upload.file.url %>">
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
 
 <%  if @album.user.id == session[:user_id] %>
 <h3> Upload a Photo! </h3>
